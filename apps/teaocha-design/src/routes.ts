@@ -11,6 +11,7 @@ export type AppRoute = {
   exact?: boolean,
   hidden?: boolean,
   disabled?: boolean,
+  external?: boolean,
   component?: React.ComponentType<any>,
 }
 
@@ -45,9 +46,10 @@ export const routes: { [name: string]: AppRoute } = {
   blog: {
     key: 'blog',
     title: translate('pages.blog.pageTitle'),
-    href: '/blog',
-    disabled: true,
-    hidden: true,
+    href: 'https://blog.teaochadesign.com',
+    disabled: false,
+    hidden: false,
+    external: true,
   },
 }
 

@@ -27,7 +27,11 @@ export function App(): JSX.Element {
       route => ({
       ...route,
       onClick: () => {
-        history.push(route.href)
+        if (route.external) {
+          window.location.href = route.href
+        } else {
+          history.push(route.href)
+        }
       },
       // The home page is more of a splash-screen so it doesn't
       // make sense for that to be a visible route when the user is
