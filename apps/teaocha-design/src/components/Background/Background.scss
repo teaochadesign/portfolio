@@ -1,0 +1,305 @@
+$steamBottomOffset: 200px;
+$steamBottomOffsetSm: 125px;
+
+@keyframes steamrise {
+  0% {
+    bottom: $steamBottomOffset + 20px;
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 1.0;
+  }
+  100% {
+    bottom: $steamBottomOffset + 70px;
+    opacity: 0.0;
+  }
+}
+
+@keyframes steamrise2 {
+  0% {
+    bottom: $steamBottomOffset;
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    bottom: $steamBottomOffset + 90px;
+    opacity: 0.0;
+  }
+}
+
+@keyframes steamrise3 {
+  0% {
+    bottom: $steamBottomOffset + 10px;
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    bottom: $steamBottomOffset + 90px;
+    opacity: 0.0;
+  }
+}
+
+@keyframes steamriseSMALL {
+  0% {
+    bottom: $steamBottomOffsetSm + 10px;
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 1.0;
+  }
+  100% {
+    bottom: $steamBottomOffsetSm + 110px;
+    opacity: 0.0;
+  }
+}
+
+@keyframes steamrise2SMALL {
+  0% {
+    bottom: $steamBottomOffsetSm;
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    bottom: $steamBottomOffsetSm + 70px;
+    opacity: 0.0;
+  }
+}
+
+@keyframes steamrise3SMALL {
+  0% {
+    bottom: $steamBottomOffsetSm + 10px;
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    bottom: $steamBottomOffsetSm + 50px;
+    opacity: 0.0;
+  }
+}
+
+.root {
+  position: fixed;
+  z-index: -10;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+
+.bg-left {
+  position: absolute;
+  bottom: -10px;
+  left: -2px;
+  height: 70%;
+  width: 100%;
+  min-width: 550px;
+
+  & img {
+    object-position: bottom left;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 200%;
+    min-width: 550px;
+  }
+}
+
+.bg-right {
+  position: absolute;
+  bottom: -2px;
+  right: -10px;
+  height: 40%;
+  width: 60%;
+
+  & img {
+    object-position: bottom right;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 60%;
+  }
+}
+
+.table {
+  position: absolute;
+  bottom: -80px;
+  right: -10px;
+  width: 300px;
+
+  & img {
+    object-position: bottom right;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 250px;
+    right: -80px;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.teacup {
+  position: absolute;
+  bottom: 130px;
+  right: 40px;
+  height: 140px;
+  width: 160px;
+
+  & img {
+    object-position: bottom;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 10%;
+    right: 30px;
+    bottom: 90px;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.steam-1 {
+  position: absolute;
+  right: 130px;
+  opacity: 0.0;
+  width: 60px;
+  animation: steamrise 6s linear 0s infinite;
+
+  & img {
+    object-position: bottom;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 5%;
+    right: 85px;
+    animation: steamriseSMALL 6s linear 0s infinite;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.steam-2 {
+  position: absolute;
+  right: 80px;
+  opacity: 0.0;
+  width: 70px;
+  animation: steamrise2 6s linear 4s infinite;
+
+  & img {
+    object-position: bottom;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 5%;
+    right: 55px;
+    animation: steamrise2SMALL 6s linear 4s infinite;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.steam-3 {
+  position: absolute;
+  right: 50px;
+  opacity: 0.0;
+  width: 70px;
+  animation: steamrise3 6s linear 2s infinite;
+
+  & img {
+    object-position: bottom;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 5%;
+    right: 40px;
+    animation: steamrise3SMALL 6s linear 2s infinite;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+/*
+UNUSED TREE STYLES
+------------------------------
+
+@keyframes leaffall {
+  from {
+    top: -20%;
+  }
+  to {
+    top: 120%;
+  }
+}
+
+@keyframes leafsway {
+  0% {
+    left: 12%;
+  }
+  50%{
+    left: 8%;
+  }
+  100% {
+    left: 12%;
+  }
+}
+
+@keyframes leafswaySMALL {
+  0% {
+    left: 7%;
+  }
+  50%{
+    left: 4%;
+  }
+  100% {
+    left: 7%;
+  }
+}
+
+.tree {
+  position: absolute;
+  left: -5px;
+  bottom: -5vh;
+  height: 110%;
+  min-width: 350px;
+
+  & img {
+    object-position: top left;
+  }
+}
+
+.leaf {
+  width: 35px;
+  position: absolute;
+  animation: leaffall 12s linear 0s infinite, leafsway 3s ease-in-out 0s infinite;
+  
+  @media screen and (max-width: 1300px) {
+    animation: leaffall 12s linear 0s infinite, leafswaySMALL 3s ease-in-out 0s infinite;
+  }
+
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
+}
+
+*/

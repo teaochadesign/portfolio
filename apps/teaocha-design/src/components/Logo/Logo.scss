@@ -1,0 +1,19 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  & img {
+    height: auto;
+  }
+}
+
+.teacup {
+  flex: 2;
+  margin-right: 5%;
+}
+
+.logo {
+  flex: 13;
+}

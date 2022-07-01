@@ -1,0 +1,176 @@
+@import '~@teaocha/ui-common/src/styles/variables.scss';
+
+$headerHeight: 52px;
+
+.root {
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: $headerHeight;
+}
+
+.background {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  backdrop-filter: blur(5px);
+}
+
+.navigation {
+  display: flex;
+  max-width: 80vw;
+  z-index: 1;
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .nav-item {
+    margin: 0px 8px;
+  }
+}
+
+.inner-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.root.mode-top {
+  box-shadow: $depth-shadow-8;
+}
+
+.mode-top {
+  .background {
+    opacity: 0.9;
+  }
+
+  .inner-wrapper {
+    padding-left: $headerHeight * 1.6;
+    height: $headerHeight;
+    position: relative;
+  }
+
+  .navigation {
+    flex: 1;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    width: 200px;
+    max-height: $headerHeight * 0.8;
+    margin-right: 24px;
+  }
+
+  @media screen and (max-width: $screen-min-lg) {
+    .navigation {
+      display: none;
+    }
+
+    .logo {
+      margin: auto;
+    }
+
+    .inner-wrapper {
+      padding-left: 0px;
+    }
+  }
+}
+
+.mode-central {
+  .background {
+    display: none;
+  }
+
+  .inner-wrapper {
+    position: absolute;
+    flex-flow: column;
+
+    top: 25vh;
+    left: 60vw;
+    transform: translate(-50%, -50%);
+
+    .navigation {
+      font-size: 1.7em;
+      justify-content: center;
+
+      ul {
+        justify-content: center;
+      }
+
+      .nav-item {
+        margin: 4px 8px;
+      }
+    }
+  
+    .logo {
+      max-width: 400px;
+      width: 400px;
+    }
+
+    @media screen and (max-width: 1000px) {
+      top: 20vh;
+    }
+
+    @media screen and (max-width: 800px) {
+      top: 130px;
+      left: 50vw;
+    }
+
+    @media screen and (max-height: 600px) {
+      top: 130px;
+    }
+
+    @media screen and (max-width: 600px) and (max-height: 600px) {
+      top: 110px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .logo {
+        width: 80vw;
+      }
+
+      .navigation {
+        font-size: 1.5em;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .navigation {
+        font-size: 1.3em;
+      }
+    }
+  }
+}
+
+.side-menu-footer {
+  ul {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  li {
+    list-style: none;
+    margin: 8px;
+  }
+
+  .external-profile-links {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.2em;
+  }
+}

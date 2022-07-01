@@ -1,0 +1,39 @@
+{
+  "name": "@teaocha/teaocha-design-site-ui",
+  "version": "1.0.0",
+  "description": "Code for the UI of teaochadesign.com",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ${ESLINT_ARGS}",
+    "lint-fix": "eslint --fix ${ESLINT_ARGS}",
+    "test": "jest ${JEST_ARGS}",
+    "test-watch": "jest --watchAll ${JEST_ARGS}",
+    "test-coverage": "jest --coverage ${JEST_ARGS}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github:Matteaocha/teaocha-design-site-ui.git"
+  },
+  "author": "Matthew Bilton",
+  "workspaces": [
+    "./apps/*",
+    "./packages/*"
+  ],
+  "dependencies": {
+    "@types/lodash": "^4.14.170",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "typescript": "^4.3.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.29.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "jest": "^27.0.5",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "tsconfig-paths-webpack-plugin": "^3.5.1"
+  }
+}
