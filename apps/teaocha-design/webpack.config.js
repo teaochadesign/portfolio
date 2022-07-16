@@ -51,7 +51,7 @@ if (!isProduction) {
 //--------------------------------------------------------------------------------
 
 module.exports = {
-  entry: './apps/teaocha-design/src/index.tsx',
+  entry: './src/index.tsx',
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [
