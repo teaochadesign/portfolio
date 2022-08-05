@@ -1,13 +1,14 @@
+import React from 'react';
 import {
   Icon,
   Image,
   ImageFit,
   Link,
   Separator,
-} from '@teaocha/ui-common'
-import { theme } from '@/apps/teaocha-design/src/theme'
-import { translate } from '@/apps/teaocha-design/src/i18n'
-import classNames from './ProfileItem.scss'
+} from '@teaocha/ui-common';
+import { theme } from '@/apps/teaocha-design/src/theme';
+import { translate } from '@/apps/teaocha-design/src/i18n';
+import classNames from './ProfileItem.scss';
 
 export interface IProfileItemSection {
   title?: string,
@@ -16,22 +17,21 @@ export interface IProfileItemSection {
   description?: string[],
 }
 
-/*
-@description
-A section of the timeline of this profile item - for example, a role played
-or a specific sub-project etc.
-*/
-function ProfileItemSection(props: IProfileItemSection): JSX.Element {
+/**
+ * A section of the timeline of this profile item - for example, a role played
+ * or a specific sub-project etc.
+ */
+function ProfileItemSection(props: IProfileItemSection): React.ReactElement<any> {
   return (
     <div
       className={classNames['item-section']}
-      data-testid={'ProfileItemSection'}
+      data-testid="ProfileItemSection"
     >
       {props.title && <h4>{props.title}</h4>}
       {
         props.duration && (
           <div
-            className={classNames['duration']}
+            className={classNames.duration}
             aria-label={translate('pages.profile.item.durationLabel')}
             style={{ color: theme.palette.neutralSecondary }}
           >
@@ -40,10 +40,10 @@ function ProfileItemSection(props: IProfileItemSection): JSX.Element {
         )
       }
       <div
-        className={classNames['location']}
+        className={classNames.location}
         aria-label={translate('pages.profile.item.locationLabel')}
         style={{
-          color: theme.palette.neutralSecondary
+          color: theme.palette.neutralSecondary,
         }}
       >
         {props.location}
@@ -51,19 +51,19 @@ function ProfileItemSection(props: IProfileItemSection): JSX.Element {
       {
         props.description && (
           <div
-            className={classNames['description']}
+            className={classNames.description}
             aria-label={translate('pages.profile.item.descriptionLabel')}
           >
             {
               props.description.map(
-                (d, i) => <p key={`description-paragraph-${i}`}>{d}</p>
+                (d, i) => <p key={`description-paragraph-${i}`}>{d}</p>,
               )
             }
           </div>
         )
       }
     </div>
-  )
+  );
 }
 
 export interface IProfileItem {
@@ -81,36 +81,39 @@ export interface IProfileItem {
   showSeparator?: boolean,
 }
 
-/*
-@description
-LinkedIn style profile experience item, used to detail job history,
-or other life events.
-*/
-export function ProfileItem(props: IProfileItem): JSX.Element {
+/**
+ * LinkedIn style profile experience item, used to detail job history,
+ * or other life events.
+ */
+export function ProfileItem(props: IProfileItem): React.ReactElement<any> {
   return (
     <div
-      data-testid={'ProfileItem'}
+      data-testid="ProfileItem"
       className={classNames['profile-item']}
     >
-      <div className={classNames['logo-or-icon']} aria-hidden={true} >
+      <div className={classNames['logo-or-icon']} aria-hidden>
         {
-          props.image ?
-            <Image
-              src={props.image}
-              className={classNames['logo']}
-              imageFit={ImageFit.contain}
-              data-testid={'ProfileItem-image'}
-            /> :
-            <Icon
-              className={classNames['icon']}
-              iconName={props.fallbackIconName}
-              data-testid={'ProfileItem-icon'}
-              styles={{
-                root: {
-                  color: theme.palette.themePrimary,
-                }
-              }}
-            />
+          props.image
+            ? (
+              <Image
+                src={props.image}
+                className={classNames.logo}
+                imageFit={ImageFit.contain}
+                data-testid="ProfileItem-image"
+              />
+            )
+            : (
+              <Icon
+                className={classNames.icon}
+                iconName={props.fallbackIconName}
+                data-testid="ProfileItem-icon"
+                styles={{
+                  root: {
+                    color: theme.palette.themePrimary,
+                  },
+                }}
+              />
+            )
         }
       </div>
       <div className={classNames['main-content']}>
@@ -118,17 +121,17 @@ export function ProfileItem(props: IProfileItem): JSX.Element {
         <div className={classNames['sub-header']}>
           {
             props.link && (
-              <Link href={props.link.href} target={'blank'}>
+              <Link href={props.link.href} target="blank">
                 {props.link.text || props.link.href}
               </Link>
             )
           }
         </div>
         <div
-          className={classNames['duration']}
+          className={classNames.duration}
           aria-label={translate('pages.profile.item.durationLabel')}
           style={{
-            color: theme.palette.neutralSecondary
+            color: theme.palette.neutralSecondary,
           }}
         >
           <span>{props.from}</span>
@@ -143,12 +146,12 @@ export function ProfileItem(props: IProfileItem): JSX.Element {
                 <li key={`section-${index}`}>
                   <ProfileItemSection {...section} />
                 </li>
-              )
+              ),
             )
           }
         </ul>
         {props.showSeparator && <Separator />}
       </div>
     </div>
-  )
+  );
 }

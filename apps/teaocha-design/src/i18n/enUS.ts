@@ -1,4 +1,4 @@
-import { AppStrings } from './types'
+import { AppStrings } from './types';
 
 export const enUS: AppStrings = {
   pages: {
@@ -19,7 +19,7 @@ export const enUS: AppStrings = {
       },
       item: {
         linkLabel: 'View page',
-      }
+      },
     },
     home: {
       pageTitle: 'Home',
@@ -49,7 +49,7 @@ export const enUS: AppStrings = {
           Below you will find a quick summary of my work history so far, and on the
           other pages of this site you'll find some links to any other things I'm working
           on.
-        `
+        `,
       },
       experience: {
         title: 'Experience',
@@ -62,7 +62,7 @@ export const enUS: AppStrings = {
       },
       images: {
         me: 'A picture of Matt Bilton',
-      }
+      },
     },
   },
   externalProfileLinksLabel: 'Links to external profile sites',
@@ -74,5 +74,5 @@ export const enUS: AppStrings = {
   },
   sideMenu: {
     title: 'Menu',
-  }
-}
+  },
+};

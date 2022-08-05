@@ -1,12 +1,13 @@
+import React from 'react';
 import {
   Icon,
   Image,
   ImageFit,
   Link,
-} from '@teaocha/ui-common'
-import { theme } from '@/apps/teaocha-design/src/theme'
-import { translate } from '@/apps/teaocha-design/src/i18n'
-import classNames from './CreationsItem.scss'
+} from '@teaocha/ui-common';
+import { theme } from '@/apps/teaocha-design/src/theme';
+import { translate } from '@/apps/teaocha-design/src/i18n';
+import classNames from './CreationsItem.scss';
 
 export interface ICreationsItem {
   title: string,
@@ -16,56 +17,59 @@ export interface ICreationsItem {
   description: string[],
 }
 
-/*
-@description
-Item to describe and link to some external portfolio creation.
-*/
-export function CreationsItem(props: ICreationsItem): JSX.Element {
+/**
+ * Item to describe and link to some external portfolio creation.
+ */
+export function CreationsItem(props: ICreationsItem): React.ReactElement<any> {
   return (
     <div
-      data-testid={'CreationsItem'}
+      data-testid="CreationsItem"
       className={classNames['creations-item']}
     >
-      <div className={classNames['logo-or-icon']} aria-hidden={true} >
+      <div className={classNames['logo-or-icon']} aria-hidden>
         {
-          props.image ?
-            <Image
-              src={props.image}
-              className={classNames['logo']}
-              imageFit={ImageFit.contain}
-              data-testid={'CreationsItem-image'}
-            /> :
-            <Icon
-              className={classNames['icon']}
-              iconName={props.fallbackIconName}
-              data-testid={'CreationsItem-icon'}
-              styles={{
-                root: {
-                  color: theme.palette.themePrimary,
-                }
-              }}
-            />
+          props.image
+            ? (
+              <Image
+                src={props.image}
+                className={classNames.logo}
+                imageFit={ImageFit.contain}
+                data-testid="CreationsItem-image"
+              />
+            )
+            : (
+              <Icon
+                className={classNames.icon}
+                iconName={props.fallbackIconName}
+                data-testid="CreationsItem-icon"
+                styles={{
+                  root: {
+                    color: theme.palette.themePrimary,
+                  },
+                }}
+              />
+            )
         }
       </div>
       <div className={classNames['main-content']}>
         <h3>{props.title}</h3>
-        <div className={classNames['description']}>
+        <div className={classNames.description}>
           {
             props.description.map(
-              (d, i) => <p key={`description-paragraph-${i}`}>{d}</p>
+              (d, i) => <p key={`description-paragraph-${i}`}>{d}</p>,
             )
           }
         </div>
-        <div className={classNames['links']}>
+        <div className={classNames.links}>
           <Link
             href={props.href}
-            data-testid={'CreationsItem-link'}
-            target={'blank'}
+            data-testid="CreationsItem-link"
+            target="blank"
           >
             {translate('pages.creations.item.linkLabel')}
           </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }

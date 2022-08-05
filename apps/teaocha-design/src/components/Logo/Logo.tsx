@@ -1,19 +1,20 @@
+import React from 'react';
 import {
   Image,
   ImageFit,
-} from '@teaocha/ui-common'
-import { translate } from '@/apps/teaocha-design/src/i18n'
-import classNames from './Logo.scss'
+} from '@teaocha/ui-common';
+import { translate } from '@/apps/teaocha-design/src/i18n';
 
-import logo4x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-1000px.png'
-import logo3x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-750px.png'
-import logo2x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-500px.png'
-import logo1x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-250px.png'
-import logoWhite4x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-1000px.png'
-import logoWhite3x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-750px.png'
-import logoWhite2x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-500px.png'
-import logoWhite1x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-250px.png'
-import teacup from '@/apps/teaocha-design/assets/images/teacup.svg'
+import logo4x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-1000px.png';
+import logo3x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-750px.png';
+import logo2x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-500px.png';
+import logo1x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-250px.png';
+import logoWhite4x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-1000px.png';
+import logoWhite3x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-750px.png';
+import logoWhite2x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-500px.png';
+import logoWhite1x from '@/apps/teaocha-design/assets/images/logos/TeaochaDesign/logo-white-250px.png';
+import teacup from '@/apps/teaocha-design/assets/images/teacup.svg';
+import classNames from './Logo.scss';
 
 const SOURCES = {
   regular: {
@@ -52,7 +53,7 @@ const SOURCES = {
       src: logoWhite4x,
     },
   },
-}
+};
 
 export interface ILogo {
   className?: string,
@@ -61,40 +62,40 @@ export interface ILogo {
 }
 
 export function Logo(props: ILogo) {
-  let rootClassName = classNames['root']
+  let rootClassName = classNames.root;
   if (props.className) {
-    rootClassName = `${rootClassName} ${props.className}`
+    rootClassName = `${rootClassName} ${props.className}`;
   }
 
-  const sources = props.isInverted ? SOURCES.inverted : SOURCES.regular
+  const sources = props.isInverted ? SOURCES.inverted : SOURCES.regular;
 
   return (
     <div
-      data-testid={'Logo'}
+      data-testid="Logo"
       className={rootClassName}
     >
       {
         props.showTeaCup && (
           <Image
             src={teacup}
-            className={classNames['teacup']}
+            className={classNames.teacup}
             imageFit={ImageFit.contain}
             aria-hidden
           />
         )
       }
       <Image
-        className={classNames['logo']}
+        className={classNames.logo}
         src={sources['4x'].src}
         srcSet={
           Object.values(sources)
-            .map(source => `${source.src} ${source.width}w`)
+            .map((source) => `${source.src} ${source.width}w`)
             .join(', ')
         }
-        sizes={'80vw'}
+        sizes="80vw"
         imageFit={ImageFit.contain}
         alt={translate('header.images.logo')}
       />
     </div>
-  )
+  );
 }

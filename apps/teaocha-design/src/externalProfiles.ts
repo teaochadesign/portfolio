@@ -15,4 +15,4 @@ export const externalProfileLinks: ExternalProfileLink[] = [
     title: 'GitHub',
     href: 'https://github.com/Matteaocha',
   },
-]
+];

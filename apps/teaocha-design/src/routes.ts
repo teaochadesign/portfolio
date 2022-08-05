@@ -1,7 +1,8 @@
-import { Creations } from './scenes/Creations'
-import { Home } from './scenes/Home'
-import { Profile } from './scenes/Profile'
-import { translate } from './i18n'
+import React from 'react';
+import { Creations } from './scenes/Creations';
+import { Home } from './scenes/Home';
+import { Profile } from './scenes/Profile';
+import { translate } from './i18n';
 
 export type AppRoute = {
   key: string,
@@ -51,12 +52,12 @@ export const routes: { [name: string]: AppRoute } = {
     hidden: false,
     external: true,
   },
-}
+};
 
 export const redirects: { [name: string]: AppRedirect } = {
   home: {
     key: 'home-redirect',
     from: '/home',
     to: '/',
-  }
-}
+  },
+};

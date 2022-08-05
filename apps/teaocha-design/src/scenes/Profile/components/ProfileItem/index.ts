@@ -1,1 +1,1 @@
-export * from './ProfileItem'
+export * from './ProfileItem';

@@ -1,45 +1,46 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react';
 import {
   Link,
   memoizeFunction,
   SideMenu,
   SideMenuToggleShape,
-} from '@teaocha/ui-common'
-import { Logo } from '@/apps/teaocha-design/src/components/Logo'
-import { theme, themeInverted } from '@/apps/teaocha-design/src/theme'
-import { translate } from '@/apps/teaocha-design/src/i18n'
-import { externalProfileLinks } from '@/apps/teaocha-design/src/externalProfiles'
-import _classNames from './Header.scss'
+} from '@teaocha/ui-common';
+import { Logo } from '@/apps/teaocha-design/src/components/Logo';
+import { theme, themeInverted } from '@/apps/teaocha-design/src/theme';
+import { translate } from '@/apps/teaocha-design/src/i18n';
+import { externalProfileLinks } from '@/apps/teaocha-design/src/externalProfiles';
+import _classNames from './Header.scss';
 
-/*
-@description
-Footer for the SideMenu.
-Primarily just renders a couple of external links.
-*/
-function SideMenuFooter(): JSX.Element {
+/**
+ * Footer for the SideMenu.
+ * Primarily just renders a couple of external links.
+ */
+function SideMenuFooter(): React.ReactElement<any> {
   return (
     <div
-      data-testid={'SideMenuFooter'}
+      data-testid="SideMenuFooter"
       className={_classNames['side-menu-footer']}
     >
       <ul
-        data-testid={'SideMenuFooter-external-links'}
+        data-testid="SideMenuFooter-external-links"
         className={_classNames['external-profile-links']}
         aria-label={translate('externalProfileLinksLabel')}
       >
         {
           externalProfileLinks.map(
-            extLink => (
+            (extLink) => (
               <li key={extLink.key}>
-                <Link href={extLink.href} target={'blank'}>
+                <Link href={extLink.href} target="blank">
                   {extLink.title}
                 </Link>
               </li>
-            )
+            ),
           )
         }
       </ul>
     </div>
-  )
+  );
 }
 
 export type HeaderNavItem = {
@@ -62,21 +63,21 @@ export interface HeaderProps {
 
 const makeClassNames = memoizeFunction(
   (mode: HeaderMode) => {
-    let classNames = { ..._classNames }
+    const classNames = { ..._classNames };
 
     if (mode === HeaderMode.Central) {
-      classNames['root'] = `${classNames['root']} ${classNames['mode-central']}`
+      classNames.root = `${classNames.root} ${classNames['mode-central']}`;
     }
 
     if (mode === HeaderMode.Top) {
-      classNames['root'] = `${classNames['root']} ${classNames['mode-top']}`
+      classNames.root = `${classNames.root} ${classNames['mode-top']}`;
     }
 
-    return classNames
-  }
-)
+    return classNames;
+  },
+);
 
-/* 
+/*
 @ description
 Main header for the shell app.
 
@@ -84,16 +85,16 @@ This component is pretty coupled to the layout philosophy of the app
 so I haven't made an effort to decouple the interface (which is why
 there are no props related to theme etc.)
 */
-export function Header(props: HeaderProps): JSX.Element {
-  const classNames = makeClassNames(props.mode)
-  const navItems = props.navItems.filter(x => !x.hidden)
+export function Header(props: HeaderProps): React.ReactElement<any> {
+  const classNames = makeClassNames(props.mode);
+  const navItems = props.navItems.filter((x) => !x.hidden);
 
   return (
-    <header data-testid={'Header'}>
-      <div className={classNames['root']}>
+    <header data-testid="Header">
+      <div className={classNames.root}>
         <div className={classNames['inner-wrapper']}>
           <div
-            className={classNames['background']}
+            className={classNames.background}
             style={{ backgroundColor: theme.palette.white }}
             aria-hidden
           />
@@ -106,30 +107,30 @@ export function Header(props: HeaderProps): JSX.Element {
             renderFooter={SideMenuFooter}
           />
           <Logo
-            className={classNames['logo']}
+            className={classNames.logo}
             showTeaCup={props.mode === HeaderMode.Top}
           />
           <nav
-            className={classNames['navigation']}
+            className={classNames.navigation}
             aria-label={translate('header.navigation')}
-            data-testid={'Header-navigation'}
+            data-testid="Header-navigation"
           >
             <ul>
               {
                 navItems.map(
-                  navItem => (
+                  (navItem) => (
                     <li key={`sidemenuitem-${navItem.key}`}>
                       <Link
                         className={classNames['nav-item']}
                         onClick={navItem.onClick}
-                        role='menuitem'
+                        role="menuitem"
                         disabled={navItem.disabled}
-                        data-testid={'Header-navItem'}
+                        data-testid="Header-navItem"
                       >
                         {navItem.title}
                       </Link>
                     </li>
-                  )
+                  ),
                 )
               }
             </ul>
@@ -137,5 +138,5 @@ export function Header(props: HeaderProps): JSX.Element {
         </div>
       </div>
     </header>
-  )
+  );
 }

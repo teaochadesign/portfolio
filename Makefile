@@ -8,7 +8,7 @@ export NODE_DEV_SHELL_IMAGE_NAME=$(PROJECT_NAME)-node-dev-env
 export APP=teaocha-design
 
 
-.PHONY: start build install node-dev-shell node-dev-shell-image lint test-unit coverage
+.PHONY: start build install node-dev-shell node-dev-shell-image lint test coverage
 	deploy aws-config clean
 
 install:
@@ -42,7 +42,7 @@ lint:
 		-v $(PROJECT_ROOT):/app \
 		$(NODE_DEV_SHELL_IMAGE_NAME) npm run lint
 
-test-unit:
+test:
 	docker run -it --rm \
 		-v $(PROJECT_ROOT):/app \
 		$(NODE_DEV_SHELL_IMAGE_NAME) npm run test
@@ -50,7 +50,7 @@ test-unit:
 coverage:
 	docker run -it --rm \
 		-v $(PROJECT_ROOT):/app \
-		$(NODE_DEV_SHELL_IMAGE_NAME) npm run test-coverage
+		$(NODE_DEV_SHELL_IMAGE_NAME) npm run test:coverage
 
 # ---------------------------------------------
 

@@ -5,10 +5,10 @@ scale of this website it makes more sense to just keep them
 in the codebase for now.
 */
 
-import eagleLogo from '@/apps/teaocha-design/assets/images/logos/Eagle-logo.png'
-import wordwallLogo from '@/apps/teaocha-design/assets/images/logos/Wordwall-logo-square.png'
-import grokLockLogo from '@/apps/teaocha-design/assets/images/logos/GrokLock-logo-square.png'
-import jetLogo from '@/apps/teaocha-design/assets/images/logos/JET-logo.jpeg'
+import eagleLogo from '@/apps/teaocha-design/assets/images/logos/Eagle-logo.png';
+import wordwallLogo from '@/apps/teaocha-design/assets/images/logos/Wordwall-logo-square.png';
+import grokLockLogo from '@/apps/teaocha-design/assets/images/logos/GrokLock-logo-square.png';
+import jetLogo from '@/apps/teaocha-design/assets/images/logos/JET-logo.jpeg';
 
 export const experience = [
   {
@@ -48,7 +48,7 @@ export const experience = [
         title: 'Software Engineer',
         duration: '3 years',
         location: 'Cambridge, United Kingdom',
-      }
+      },
     ],
   },
   {
@@ -69,9 +69,9 @@ export const experience = [
           `
             During this period I created the first version of this portfolio and
             used it as a hub to do some freelance software jobs for extra practice.
-          `
+          `,
         ],
-      }
+      },
     ],
   },
   {
@@ -97,9 +97,9 @@ export const experience = [
             The software already existed as a C# windows app with a respectable customer
             base. It was our responsibility to migrate that app into a web-based format,
             centred around a new community and resource-sharing portal.
-          `
+          `,
         ],
-      }
+      },
     ],
   },
   {
@@ -123,10 +123,10 @@ export const experience = [
             south of Japan.
           `,
         ],
-      }
+      },
     ],
   },
-]
+];
 
 export const education = [
   {
@@ -151,9 +151,9 @@ export const education = [
           `
             My masters thesis was in Epidemic Modelling, for which I designed
             and ran multiple world-simulations of a viral outbreak. (Written in C++).
-          `
+          `,
         ],
-      }
+      },
     ],
   },
   {
@@ -174,10 +174,10 @@ export const education = [
             recognised Japanese Language certification.
           `,
         ],
-      }
+      },
     ],
   },
-]
+];
 
 export const projects = [
   {
@@ -200,9 +200,9 @@ export const projects = [
             modelling, whilst writing and recording an album under my alter-ego
             'Grok Lock'. The album was titled 'Hill Shizuki' and was released onto
             most digital streaming platforms, where you can still find it today.
-          `
+          `,
         ],
-      }
+      },
     ],
-  }
-]
+  },
+];

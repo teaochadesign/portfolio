@@ -1,3 +1,3 @@
 export {
   memoizeFunction,
-} from '@fluentui/utilities'
+} from '@fluentui/utilities';

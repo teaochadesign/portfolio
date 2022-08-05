@@ -1,57 +1,57 @@
+import React from 'react';
 import {
   Redirect,
   Route,
   Switch,
   useHistory,
   useRouteMatch,
-} from 'react-router-dom'
-import { Background } from './components/Background'
+} from 'react-router-dom';
+import { Background } from './components/Background';
 import {
   Header,
   HeaderMode,
-} from './components/Header'
-import { NotFound } from './scenes/NotFound'
-import { redirects, routes } from './routes'
-import classNames from './App.scss'
+} from './components/Header';
+import { NotFound } from './scenes/NotFound';
+import { redirects, routes } from './routes';
+import classNames from './App.scss';
 
-/*
-@description
-Entrypoint component for the application.
-Deals primarily with routing etc.
-*/
-export function App(): JSX.Element {
-  const history = useHistory()
-  const isHome = !!useRouteMatch({ path: '/', exact: true })
+/**
+ * Entrypoint component for the application.
+ * Deals primarily with routing etc.
+ */
+export function App(): React.ReactElement<any> {
+  const history = useHistory();
+  const isHome = !!useRouteMatch({ path: '/', exact: true });
 
   const navItems = Object.values(routes).map(
-      route => ({
+    (route) => ({
       ...route,
       onClick: () => {
         if (route.external) {
-          window.location.href = route.href
+          window.location.href = route.href;
         } else {
-          history.push(route.href)
+          history.push(route.href);
         }
       },
       // The home page is more of a splash-screen so it doesn't
       // make sense for that to be a visible route when the user is
       // on that page.
       hidden: route.hidden || (route.key === 'home' && isHome),
-    })
-  )
+    }),
+  );
 
   return (
-    <div data-testid={'TeaochaDesign-App-root'}>
+    <div data-testid="TeaochaDesign-App-root">
       <Background />
       <Header
         navItems={navItems}
         mode={isHome ? HeaderMode.Central : HeaderMode.Top}
       />
-      <main className={classNames['main']} >
+      <main className={classNames.main}>
         <Switch>
           {
             Object.values(redirects).map(
-              redirect => (
+              (redirect) => (
                 <Route
                   key={redirect.key}
                   path={redirect.from}
@@ -59,19 +59,19 @@ export function App(): JSX.Element {
                 >
                   <Redirect to={redirect.to} />
                 </Route>
-              )
+              ),
             )
           }
           {
             Object.values(routes).map(
-              route => (
+              (route) => (
                 <Route
                   key={route.key}
                   path={route.href}
                   exact={route.exact}
                   component={route.component || NotFound}
                 />
-              )
+              ),
             )
           }
           <Route>
@@ -80,7 +80,7 @@ export function App(): JSX.Element {
         </Switch>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

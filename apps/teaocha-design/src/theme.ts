@@ -1,5 +1,5 @@
-import { createTheme } from '@teaocha/ui-common'
-import fonts from './styles/fonts.scss'
+import { createTheme } from '@teaocha/ui-common';
+import fonts from './styles/fonts.scss';
 
 const palette = {
   themePrimary: '#bf1717',
@@ -24,12 +24,12 @@ const palette = {
   neutralDark: '#201f1e',
   black: '#000000',
   white: '#e6f7ff',
-}
+};
 
 const theme = createTheme({
   defaultFontStyle: { fontFamily: fonts.contentFont },
-  palette
-})
+  palette,
+});
 
 const paletteInverted = {
   themePrimary: '#ffffff',
@@ -54,16 +54,16 @@ const paletteInverted = {
   neutralDark: '#f4f4f4',
   black: '#f8f8f8',
   white: '#bf1717',
-}
+};
 
 const themeInverted = createTheme({
   defaultFontStyle: { fontFamily: fonts.contentFont },
   palette: paletteInverted,
-})
+});
 
 export {
   palette,
   theme,
   paletteInverted,
   themeInverted,
-}
+};

@@ -1,17 +1,18 @@
-import { PrimaryButton } from '@/packages/ui-common/src/components/Button'
-import { Link } from '@/packages/ui-common/src/components/Link'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from 'react';
+import { PrimaryButton } from '@/packages/ui-common/src/components/Button';
+import { Link } from '@/packages/ui-common/src/components/Link';
 import {
-  Panel as Panel,
-  PanelType as PanelType,
-} from '@/packages/ui-common/src/components/Panel'
+  Panel,
+  PanelType,
+} from '@/packages/ui-common/src/components/Panel';
 import {
-  ITheme as ITheme,
-  ThemeProvider as ThemeProvider,
-} from '@/packages/ui-common/src/components/Theme'
-import { useState } from 'react'
-import classNames from './SideMenu.scss'
+  ITheme,
+  ThemeProvider,
+} from '@/packages/ui-common/src/components/Theme';
+import classNames from './SideMenu.scss';
 
-export type SideMenuNavItem = {
+export type SideMenuNavItemType = {
   key: string,
   title: string,
   onClick: (e: React.SyntheticEvent) => void,
@@ -20,22 +21,22 @@ export type SideMenuNavItem = {
 }
 
 export interface ISideMenuNavItemProps {
-  children: string | JSX.Element,
+  children: string | React.ReactElement<any>,
   onClick: (e: React.SyntheticEvent) => void,
   disabled?: boolean,
 }
 
-function SideMenuNavItem(props: ISideMenuNavItemProps): JSX.Element {
+function SideMenuNavItem(props: ISideMenuNavItemProps): React.ReactElement<any> {
   return (
     <Link
       onClick={props.onClick}
-      role='menuitem'
+      role="menuitem"
       disabled={props.disabled}
-      data-testid={'SideMenuNavItem'}
+      data-testid="SideMenuNavItem"
     >
       {props.children}
     </Link>
-  )
+  );
 }
 
 //--------------------------------------------------------------------------------
@@ -43,45 +44,44 @@ function SideMenuNavItem(props: ISideMenuNavItemProps): JSX.Element {
 export enum SideMenuToggleShape {
   Square,
   Bubble,
-} 
+}
 
 export interface ISideMenuProps {
   title: string,
-  navItems: SideMenuNavItem[],
-  renderFooter?: () => JSX.Element,
+  navItems: SideMenuNavItemType[],
+  renderFooter?: () => React.ReactElement<any>,
   visible: boolean,
   theme?: ITheme,
   toggleShape?: SideMenuToggleShape,
 }
 
 /*
- * @description
  * Renders a hamburger menu which, when clicked, opens a menu panel from
  * the left hand side.
 */
-export function SideMenu(props: ISideMenuProps): JSX.Element {
-  const [ isOpen, setMenuOpen ] = useState(false)
-  const toggleMenu = () => setMenuOpen(!isOpen)
+export function SideMenu(props: ISideMenuProps): React.ReactElement<any> {
+  const [isOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!isOpen);
 
-  const navItems = props.navItems.filter(x => !x.hidden)
+  const navItems = props.navItems.filter((x) => !x.hidden);
 
-  let toggleShapeClass = classNames['toggle-shape-square']
+  let toggleShapeClass = classNames['toggle-shape-square'];
   if (props.toggleShape === SideMenuToggleShape.Bubble) {
-    toggleShapeClass = classNames['toggle-shape-bubble']
+    toggleShapeClass = classNames['toggle-shape-bubble'];
   }
 
   return (
     <div
-      data-testid={'SideMenu'}
-      className={classNames['root']}
+      data-testid="SideMenu"
+      className={classNames.root}
     >
       {
         props.visible && (
           <PrimaryButton
-            className={`${classNames['toggle']} ${toggleShapeClass}`}
+            className={`${classNames.toggle} ${toggleShapeClass}`}
             iconProps={{ iconName: 'GlobalNavButton' }}
             onClick={toggleMenu}
-            data-testid={'SideMenu-toggle'}
+            data-testid="SideMenu-toggle"
           />
         )
       }
@@ -89,31 +89,31 @@ export function SideMenu(props: ISideMenuProps): JSX.Element {
         <Panel
           onDismiss={toggleMenu}
           type={PanelType.customNear}
-          customWidth={'400px'}
+          customWidth="400px"
           isOpen={isOpen}
           isBlocking
           isLightDismiss
           hasCloseButton
         >
           <div
-            className={classNames['content']}
-            data-testid={'SideMenu-panel'}
+            className={classNames.content}
+            data-testid="SideMenu-panel"
           >
             <nav
-              aria-labelledby='sidemenu'
-              data-testid={'SideMenu-navigation'}
+              aria-labelledby="sidemenu"
+              data-testid="SideMenu-navigation"
             >
-              <h2 id='sidemenu'>{props.title}</h2>
+              <h2 id="sidemenu">{props.title}</h2>
               <ul>
                 {
                   navItems.map(
-                    navItem => (
+                    (navItem) => (
                       <li key={`sidemenuitem-${navItem.key}`}>
                         <SideMenuNavItem
                           onClick={
                             (e: React.SyntheticEvent) => {
-                              toggleMenu()
-                              navItem.onClick(e)
+                              toggleMenu();
+                              navItem.onClick(e);
                             }
                           }
                           disabled={navItem.disabled}
@@ -121,7 +121,7 @@ export function SideMenu(props: ISideMenuProps): JSX.Element {
                           {navItem.title}
                         </SideMenuNavItem>
                       </li>
-                    )
+                    ),
                   )
                 }
               </ul>
@@ -131,5 +131,5 @@ export function SideMenu(props: ISideMenuProps): JSX.Element {
         </Panel>
       </ThemeProvider>
     </div>
-  )
+  );
 }

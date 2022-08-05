@@ -1,6 +1,6 @@
-const { getUnpkgURL } = require('@teaocha/pkg-utils/scripts/get-cdn-url')
+const { getUnpkgURL } = require('@teaocha/pkg-utils/scripts/get-cdn-url');
 
-module.exports.getExternals = function(isProduction) {
+module.exports.getExternals = function (isProduction) {
   return [
     {
       name: 'lodash',
@@ -11,7 +11,7 @@ module.exports.getExternals = function(isProduction) {
       name: 'react',
       src: getUnpkgURL(
         'react',
-        isProduction ? 'umd/react.production.min.js' : 'umd/react.development.js'
+        isProduction ? 'umd/react.production.min.js' : 'umd/react.development.js',
       ),
       globalVarName: 'React',
     },
@@ -19,7 +19,7 @@ module.exports.getExternals = function(isProduction) {
       name: 'react-dom',
       src: getUnpkgURL(
         'react-dom',
-        isProduction ? 'umd/react-dom.production.min.js' : 'umd/react-dom.development.js'
+        isProduction ? 'umd/react-dom.production.min.js' : 'umd/react-dom.development.js',
       ),
       globalVarName: 'ReactDOM',
     },
@@ -33,5 +33,5 @@ module.exports.getExternals = function(isProduction) {
       src: getUnpkgURL('react-router-dom', 'umd/react-router-dom.min.js'),
       globalVarName: 'ReactRouterDOM',
     },
-  ]
-}
+  ];
+};
