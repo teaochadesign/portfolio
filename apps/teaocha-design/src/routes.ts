@@ -1,5 +1,4 @@
 import React from 'react';
-import { Creations } from './scenes/Creations';
 import { Home } from './scenes/Home';
 import { Profile } from './scenes/Profile';
 import { translate } from './i18n';
@@ -37,12 +36,6 @@ export const routes: { [name: string]: AppRoute } = {
     title: translate('pages.profile.pageTitle'),
     href: '/profile',
     component: Profile,
-  },
-  creations: {
-    key: 'creations',
-    title: translate('pages.creations.pageTitle'),
-    href: '/creations',
-    component: Creations,
   },
   blog: {
     key: 'blog',
