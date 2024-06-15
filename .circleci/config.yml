@@ -8,7 +8,7 @@ jobs:
   lint_test:
     executor:
       name: node/default
-      tag: '16.11.1'
+      tag: '20.14.0'
     steps:
       - checkout
       - run: npm install --dev
@@ -18,7 +18,7 @@ jobs:
   build_deploy:
     executor:
       name: node/default
-      tag: '16.11.1'
+      tag: '20.14.0'
     steps:
       - checkout
       - run: npm install

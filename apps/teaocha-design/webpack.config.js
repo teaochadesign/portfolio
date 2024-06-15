@@ -149,11 +149,13 @@ module.exports = {
   },
   plugins,
   devServer: {
-    contentBase: distDir,
     port: env.port,
     host: '0.0.0.0',
     hot: true,
     historyApiFallback: true,
+    static: {
+      directory: distDir,
+    }
   },
   output: {
     filename: isProduction ? 'bundle_[contenthash].min.js' : 'bundle.js',

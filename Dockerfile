@@ -1,6 +1,6 @@
 # BASE-------------------------------------------------
 
-FROM node:16-buster-slim as base
+FROM node:20-buster-slim as base
 
 RUN apt-get update
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import React from 'react';
 import { Separator } from '@teaocha/ui-common';
 import { MainContent } from '@/apps/teaocha-design/src/components/MainContent';
